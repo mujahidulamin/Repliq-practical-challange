@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import DashboardNavbar from "./DashboardNavbar";
 
 const DashboardLayout = () => {
@@ -14,10 +14,10 @@ const DashboardLayout = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             <li>
-              <a>Sidebar Item 1</a>
+              <Link to={'/dashboard/customerList'}>Customer List</Link>
             </li>
             <li>
-              <a>Sidebar Item 2</a>
+              <Link to={'/dashboard/addCustomer'}>Add Customer</Link>
             </li>
           </ul>
         </div>

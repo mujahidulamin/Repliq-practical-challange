@@ -40,7 +40,7 @@ const DashboardNavbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost normal-case text-xl">E-Shopping</a>
+        <Link to={'/'} className="btn btn-ghost normal-case text-xl">E-Shopping</Link>
       </div>
       <div className="navbar-end">
         <label

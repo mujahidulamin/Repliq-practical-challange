@@ -10,6 +10,7 @@ import Register from "../pages/Register";
 import DashboardLayout from "../layouts/DashboardLayout";
 import CustomerList from "../pages/Dashboard/CustomerList";
 import CustomerDetails from "../pages/Dashboard/CustomerDetails";
+import AddCustomer from "../pages/Dashboard/AddCustomer";
 
 
 const routes = createBrowserRouter([
@@ -38,7 +39,7 @@ const routes = createBrowserRouter([
         path: "/customerDetails/:id",
         element: <CustomerDetails></CustomerDetails>,
       },
-     
+      
     ],
   },
 
@@ -56,8 +57,12 @@ const routes = createBrowserRouter([
     element: <DashboardLayout></DashboardLayout>,
     children: [
       {
-        path: "/dashboard",
+        path: "/dashboard/customerList",
         element: <CustomerList></CustomerList>,
+      },
+      {
+        path: "/dashboard/addCustomer",
+        element: <AddCustomer></AddCustomer>,
       },
     ],
   },

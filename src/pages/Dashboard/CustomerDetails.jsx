@@ -15,7 +15,7 @@ const CustomerDetails = () => {
   });
 
   const { id } = useParams();
-  const customer = customers?.find((p) => p.id === parseInt(id));
+  const customer = customers?.find((p) => p._id === id);
 
   console.log(customer);
 
@@ -24,7 +24,7 @@ const CustomerDetails = () => {
       <h1 className="text-center text-4xl my-4 font-bold">Customer Details</h1>
 
       <div className="flex justify-center my-6">
-        <div className="max-w-md p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100 border">
+        <div className="max-w-lg p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100 border">
           <div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
             <img
               src={customer?.image}
@@ -70,10 +70,10 @@ const CustomerDetails = () => {
                   {customer?.phoneNumber}
                 </span>
               </span>
+              <p className="dark:text-gray-400"><span>Birth Date: </span>{customer?.birthdate}</p>
             </div>
           </div>
         </div>
-        ;
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ const CustomerList = () => {
                 <td>{customer?.name}</td>
                 <td>{customer?.email}</td>
                 <td>{customer?.category}</td>
-                <Link to={`/customerDetails/${customer.id}`}>
+                <Link to={`/customerDetails/${customer._id}`}>
                   <td>
                     <button className="btn btn-ghost btn-sm">view</button>
                   </td>
