@@ -1,9 +1,24 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { useAppSelector } from "../redux/hooks";
+import { useDispatch } from "react-redux";
+import { FaUserAlt } from "react-icons/fa";
+import { setUser } from "../redux/users/usersSlice";
+import Cookies from "js-cookie";
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { email } = useAppSelector((state) => state.users.user);
+  console.log(email);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(setUser(null));
+    Cookies.remove("token");
+  };
 
   return (
     <div className="bg-sky-50 px-4 py-3 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:px-8 sticky top-0 z-50 header">
@@ -22,7 +37,7 @@ const Navbar = () => {
         <ul className="flex items-center hidden space-x-8 lg:flex">
           <li className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
             <NavLink
-              to="/home"
+              to="/"
               aria-label="Home"
               title="Home"
               className={({ isActive }) => (isActive ? "active" : undefined)}
@@ -40,30 +55,63 @@ const Navbar = () => {
               Checkout
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/faq"
-              aria-label="Faq"
-              title="Faq"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >
-              <div className="relative py-3">
-                <p>FAQ</p>
-                <p className="absolute bottom-5 left-9"></p>
-              </div>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/blog"
-              aria-label="Blog"
-              title="Blog"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >
-              Blog
-            </NavLink>
-          </li>
+          {email ? (
+            <>
+              <li>
+                <button
+                  onClick={handleLogout}
+                  aria-label="Logout"
+                  title="Logout"
+                  className="font-medium tracking-wide text-red-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Logout
+                </button>
+              </li>
 
+              <li>
+                <div className="tooltip tooltip-bottom" data-tip={email}>
+                  {email ? (
+                    <img
+                      className="rounded-full"
+                      style={{ height: "40px" }}
+                      src="https://img.freepik.com/premium-vector/man-avatar-profile-round-icon_24640-14044.jpg?w=740"
+                      alt=""
+                    />
+                  ) : (
+                    <div className="tooltip tooltip-bottom" data-tip="Profile">
+                      <FaUserAlt></FaUserAlt>
+                    </div>
+                  )}
+                </div>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink
+                  to="/login"
+                  aria-label="login"
+                  title="login"
+                  className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Login
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/register"
+                  aria-label="register"
+                  title="register"
+                  className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  <div className="relative py-3">
+                    <p>Register</p>
+                    <p className="absolute bottom-5 left-9"></p>
+                  </div>
+                </NavLink>
+              </li>
+            </>
+          )}
           <li>
             <Link to={"/cart"}>
               <FaShoppingCart></FaShoppingCart>
@@ -210,12 +258,12 @@ const Navbar = () => {
                     </li>
                     <li>
                       <NavLink
-                        to="/courses"
-                        aria-label="Courses"
-                        title="Courses"
+                        to="/checkout"
+                        aria-label="checkout"
+                        title="checkout"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
-                        Courses
+                        Checkout
                       </NavLink>
                     </li>
                     <li>
@@ -230,14 +278,21 @@ const Navbar = () => {
                     </li>
                     <li>
                       <NavLink
-                        to="/blog"
-                        aria-label="Blog"
-                        title="Blog"
+                        to="/login"
+                        aria-label="login"
+                        title="login"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
-                        Blog
+                        Login
                       </NavLink>
                     </li>
+
+                    <li>
+                      <Link to={"/cart"}>
+                        <FaShoppingCart></FaShoppingCart>
+                      </Link>
+                    </li>
+
                     {/* {user?.uid ? (
                       <li>
                         <button

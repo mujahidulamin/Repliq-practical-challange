@@ -2,7 +2,9 @@ import { Helmet } from "react-helmet";
 import { useAppSelector } from "../redux/hooks";
 import toast, { Toaster } from "react-hot-toast";
 export default function Checkout() {
-  const { products } = useAppSelector((state) => state.cart);
+  const { products, total } = useAppSelector((state) => state.cart);
+
+  const Total = total + 4.5;
 
   const handleCheckout = () => {
     toast.success("Checkout Successfully");
@@ -42,10 +44,11 @@ export default function Checkout() {
                 </div>
               ))}
             </div>
+
             <div className="space-y-2">
               <div className="flex justify-between text-lg">
                 <p>Subtotal</p>
-                <p>77.90$</p>
+                <p>{total}</p>
               </div>
               <div className="flex justify-between text-lg">
                 <p>Delivery</p>
@@ -53,7 +56,7 @@ export default function Checkout() {
               </div>
               <div className="flex justify-between text-xl font-bold">
                 <p>Total</p>
-                <p>81.95$</p>
+                <p>{Total}</p>
               </div>
               <button
                 onClick={() => handleCheckout()}
