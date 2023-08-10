@@ -1,13 +1,14 @@
 import { Helmet } from "react-helmet";
 import { useAppSelector } from "../redux/hooks";
-import toast, { Toaster } from "react-hot-toast";
+import Swal from "sweetalert";
+
 export default function Checkout() {
   const { products, total } = useAppSelector((state) => state.cart);
 
   const Total = total + 4.5;
 
   const handleCheckout = () => {
-    toast.success("Checkout Successfully");
+    Swal("Checkout Successfully", "", "success");
   };
 
   return (
@@ -16,7 +17,6 @@ export default function Checkout() {
         <title>Checkout</title>
       </Helmet>
 
-      <Toaster></Toaster>
       <div className="flex justify-center items-center h-[calc(100vh-80px)] gap-10 mx-5">
         <div className="max-w-lg w-full">
           <h1 className="mb-2 text-lg font-semibold">Order Summery</h1>

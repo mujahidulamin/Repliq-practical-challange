@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: {
-    email: null,
+    number: null,
   },
   isLoading: false,
 };
@@ -14,7 +14,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user.email = action.payload;
+      state.user.number = action.payload;
     },
     setLoading: (state, action) => {
       state.isLoading = action.payload;

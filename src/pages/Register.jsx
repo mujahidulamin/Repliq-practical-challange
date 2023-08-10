@@ -7,10 +7,10 @@ import { useSignUpMutation } from "../redux/users/usersAPi";
 import { setLoading } from "../redux/users/usersSlice";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import InputMask from "react-input-mask";
 
 const Register = () => {
-
-  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useAppDispatch();
@@ -22,13 +22,13 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const credential = { email, password };
+      const credential = { number, password };
       dispatch(setLoading(true));
       const response = await signUpMutation(credential);
       if (response.data) {
         Swal(response?.data?.message, "", "success");
         navigate("/login");
-        setEmail("");
+        setNumber("");
         setPassword("");
       } else {
         Swal(response?.error?.data?.message, "", "error");
@@ -60,15 +60,14 @@ const Register = () => {
                   htmlFor="email"
                   className="block text-gray-700 text-sm font-semibold mb-2"
                 >
-                  Email
+                  Phone Number
                 </label>
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  defaultValue={email}
-                  type="email"
-                  id="email"
+                <InputMask
+                  onChange={(e) => setNumber(e.target.value)}
+                  defaultValue={number}
+                  mask="99999-999999"
                   className="w-full p-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500"
-                  placeholder="Enter your email"
+                  placeholder="Enter your Phone number"
                   required
                 />
               </div>

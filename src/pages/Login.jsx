@@ -8,9 +8,10 @@ import Footer from "../components/Footer";
 import { useAppDispatch } from "../redux/hooks";
 import { useSignInMutation } from "../redux/users/usersAPi";
 import { setLoading } from "../redux/users/usersSlice";
+import InputMask from "react-input-mask";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useAppDispatch();
@@ -21,7 +22,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const credential = { email, password };
+      const credential = { number, password };
       dispatch(setLoading(true));
       const response = await signInMutation(credential);
       console.log(response);
@@ -29,7 +30,7 @@ const Login = () => {
         Swal(response?.data?.message, "", "success");
         Cookies.set("token", response?.data?.token);
         navigate("/");
-        setEmail("");
+        setNumber("");
         setPassword("");
       } else {
         Swal(response?.error?.data?.message, "", "error");
@@ -44,7 +45,7 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>Sign In</title>
+        <title>Log In</title>
       </Helmet>
 
       <Navbar></Navbar>
@@ -53,7 +54,7 @@ const Login = () => {
         <div className="max-w-md mx-auto my-[50px] p-5 border">
           <div>
             <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">
-              Sign In
+              Log In
             </h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-5 form-control w-full">
@@ -61,15 +62,15 @@ const Login = () => {
                   htmlFor="email"
                   className="block text-gray-700 text-sm font-semibold mb-2"
                 >
-                  Email
+                  Phone Number
                 </label>
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  defaultValue={email}
-                  type="email"
-                  id="email"
+                <InputMask
+                  onChange={(e) => setNumber(e.target.value)}
+                  defaultValue={number}
+                  id="number"
+                  mask="99999-999999"
                   className="w-full p-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500"
-                  placeholder="Enter your email"
+                  placeholder="Enter your Phone Number"
                 />
               </div>
               <div className="mb-6">
@@ -97,7 +98,7 @@ const Login = () => {
               </button>
 
               <p className="text-gray-700 text-md mt-4 text-center">
-                New to BookHub?{" "}
+                New to E-shopping?{" "}
                 <Link to="/register">
                   <a className="text-sky-500 font-semibold hover:text-sky-700">
                     Register

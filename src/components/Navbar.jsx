@@ -7,12 +7,11 @@ import { FaUserAlt } from "react-icons/fa";
 import { setUser } from "../redux/users/usersSlice";
 import Cookies from "js-cookie";
 
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { email } = useAppSelector((state) => state.users.user);
-  console.log(email);
+  const { number } = useAppSelector((state) => state.users.user);
+  console.log(number);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -55,7 +54,8 @@ const Navbar = () => {
               Checkout
             </NavLink>
           </li>
-          {email ? (
+
+          {number ? (
             <>
               <li>
                 <button
@@ -69,8 +69,8 @@ const Navbar = () => {
               </li>
 
               <li>
-                <div className="tooltip tooltip-bottom" data-tip={email}>
-                  {email ? (
+                <div className="tooltip tooltip-bottom" data-tip={number}>
+                  {number ? (
                     <img
                       className="rounded-full"
                       style={{ height: "40px" }}
@@ -112,57 +112,23 @@ const Navbar = () => {
               </li>
             </>
           )}
+
           <li>
             <Link to={"/cart"}>
               <FaShoppingCart></FaShoppingCart>
             </Link>
           </li>
 
-          {/* {user?.uid ? (
-            <li>
-              <button
-                onClick={handleLogout}
-                aria-label="Logout"
-                title="Logout"
-                className="btn btn-sm"
-              >
-                Logout
-              </button>
-            </li>
-          ) : (
-            <li>
-              <NavLink
-                to="/login"
-                aria-label="Log In"
-                title="Log In"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              >
-                LogIn
-              </NavLink>
-            </li>
-          )} */}
-
           <li>
             <NavLink
-              to="/profile"
+              to="/dashboard"
+              aria-label="dashboard"
+              title="dashboard"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
-              <div
-                className="tooltip tooltip-bottom"
-                data-tip={"user?.displayName"}
-              >
-                {/* {user?.photoURL ? (
-                  <img
-                    className="rounded-full"
-                    style={{ height: "40px" }}
-                    src={user.photoURL}
-                    alt=""
-                  />
-                ) : (
-                  <div className="tooltip tooltip-bottom" data-tip="Profile">
-                    <FaUserAlt></FaUserAlt>
-                  </div>
-                )} */}
+              <div className="relative py-3">
+                <p>Dashboard</p>
+                <p className="absolute bottom-5 left-9"></p>
               </div>
             </NavLink>
           </li>

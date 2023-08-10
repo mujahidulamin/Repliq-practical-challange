@@ -2,9 +2,10 @@ import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../redux/hooks";
 import { addToCart } from "../redux/cart/cartSlice";
-import toast, { Toaster } from "react-hot-toast";
+import Swal from "sweetalert";
 
 const ProductDetails = () => {
+  
   const products = [
     {
       id: 1,
@@ -69,12 +70,11 @@ const ProductDetails = () => {
 
   const handleAddProduct = (product) => {
     dispatch(addToCart(product));
-    toast.success("Product Added");
+    Swal("Product Added", "", "success");
   };
 
   return (
     <div>
-      <Toaster></Toaster>
       <Helmet>
         <title>Product Details</title>
       </Helmet>

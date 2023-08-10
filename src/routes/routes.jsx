@@ -5,8 +5,12 @@ import ProductDetails from "./../pages/ProductDetails";
 import Cart from "../components/Cart";
 import ErrorPage from "../pages/ErrorPage";
 import Checkout from "../pages/Checkout";
-import Login from '../pages/Login'
+import Login from "../pages/Login";
 import Register from "../pages/Register";
+import DashboardLayout from "../layouts/DashboardLayout";
+import CustomerList from "../pages/Dashboard/CustomerList";
+import CustomerDetails from "../pages/Dashboard/CustomerDetails";
+
 
 const routes = createBrowserRouter([
   {
@@ -30,6 +34,11 @@ const routes = createBrowserRouter([
         path: "/checkout",
         element: <Checkout></Checkout>,
       },
+      {
+        path: "/customerDetails/:id",
+        element: <CustomerDetails></CustomerDetails>,
+      },
+     
     ],
   },
 
@@ -40,6 +49,17 @@ const routes = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
+  },
+
+  {
+    path: "/dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "/dashboard",
+        element: <CustomerList></CustomerList>,
+      },
+    ],
   },
 ]);
 

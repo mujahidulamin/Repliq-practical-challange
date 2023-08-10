@@ -2,8 +2,8 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../redux/hooks";
-import toast, { Toaster } from "react-hot-toast";
 import { addToCart } from "../redux/cart/cartSlice";
+import Swal from "sweetalert";
 
 const Card = ({ product }) => {
   // eslint-disable-next-line react/prop-types
@@ -13,12 +13,11 @@ const Card = ({ product }) => {
 
   const handleAddProduct = (product) => {
     dispatch(addToCart(product));
-    toast.success("Product Added");
+    Swal("Product Added", "", "success");
   };
 
   return (
     <div>
-      <Toaster></Toaster>
       <div className="transform hover:translate-y-2 hover:shadow-xl transition duration-300">
         <div className="bg-gray-100 p-6 rounded shadow-lg">
           <img

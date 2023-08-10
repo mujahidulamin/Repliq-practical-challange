@@ -17,8 +17,8 @@ function App() {
     if (token) {
       try {
         const decodedToken = jwt_decode(token);
-        if (decodedToken && decodedToken?.email) {
-          dispatch(setUser(decodedToken?.email));
+        if (decodedToken && decodedToken?.number) {
+          dispatch(setUser(decodedToken?.number));
         }
       } catch (error) {
         console.error("Error decoding JWT token:", error);
