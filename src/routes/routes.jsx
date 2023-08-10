@@ -11,6 +11,8 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import CustomerList from "../pages/Dashboard/CustomerList";
 import CustomerDetails from "../pages/Dashboard/CustomerDetails";
 import AddCustomer from "../pages/Dashboard/AddCustomer";
+import OrderList from "../pages/Dashboard/OrderList";
+import OrderDetails from "../pages/Dashboard/OrderDetails";
 
 
 const routes = createBrowserRouter([
@@ -39,6 +41,10 @@ const routes = createBrowserRouter([
         path: "/customerDetails/:id",
         element: <CustomerDetails></CustomerDetails>,
       },
+      {
+        path: "/orderDetails/:id",
+        element: <OrderDetails></OrderDetails>,
+      },
       
     ],
   },
@@ -63,6 +69,10 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/addCustomer",
         element: <AddCustomer></AddCustomer>,
+      },
+      {
+        path: "/dashboard/ordersList",
+        element: <OrderList></OrderList>,
       },
     ],
   },

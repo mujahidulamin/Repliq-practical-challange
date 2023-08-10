@@ -30,12 +30,6 @@ const DashboardNavbar = () => {
                 Home
             </Link>
             </li>
-            <li>
-              <a>Portfolio</a>
-            </li>
-            <li>
-              <a>About</a>
-            </li>
           </ul>
         </div>
       </div>
