@@ -32,12 +32,12 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/courses"
-              aria-label="Courses"
-              title="Courses"
+              to="/checkout"
+              aria-label="checkout"
+              title="checkout"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
-              Courses
+              Checkout
             </NavLink>
           </li>
           <li>

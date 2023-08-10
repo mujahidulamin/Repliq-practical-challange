@@ -3,7 +3,8 @@ import App from "../App";
 import Home from "../pages/Home";
 import ProductDetails from './../pages/ProductDetails';
 import Cart from "../components/Cart";
-import ErrorPage from "../components/ErrorPage";
+import ErrorPage from "../pages/ErrorPage";
+import Checkout from "../pages/Checkout";
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const routes = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart></Cart>,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout></Checkout>,
       },
     ],
   },
