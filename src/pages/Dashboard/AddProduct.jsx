@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert";
 
-const AddCustomer = () => {
+const AddProduct = () => {
   const { register, handleSubmit } = useForm();
 
-  const imageHostKey = "de29cf88aa178b3a6967e0556b301592";
-
+  const imageHostKey = "de29cf88aa178b3a6967e0556b301592"
   const handleAddProduct = (data) => {
     console.log(data);
     const image = data.image[0];
@@ -23,16 +22,13 @@ const AddCustomer = () => {
 
           const customer = {
             name: data.name,
-            email: data.email,
+            price: data.price,
             image: imgData.data.url,
-            address: data.address,
-            phoneNumber: data.phone,
             description: data.description,
-            birthdate: data.birth,
           };
 
           //save customer information to the database
-          fetch("http://localhost:5000/customers", {
+          fetch("http://localhost:5000/products", {
             headers: {
               "content-type": "application/json",
             },
@@ -42,7 +38,7 @@ const AddCustomer = () => {
             .then((res) => res.json())
             .then((result) => {
               console.log(result);
-              Swal("Customer Added Successfully", "", "success");
+              Swal("Product Added Successfully", "", "success");
             });
         }
       });
@@ -51,48 +47,28 @@ const AddCustomer = () => {
   return (
     <div className="flex justify-center">
       <div className="w-96 p-7">
-        <h2 className="text-4xl font-bold mb-6 text-center">Add Customer</h2>
+        <h2 className="text-4xl font-bold mb-6 text-center">Add Product</h2>
         <form onSubmit={handleSubmit(handleAddProduct)}>
           <div className="form-control w-full max-w-xs">
             <label className="label">
-              <span className="label-text">Name</span>
+              <span className="label-text">Product Name</span>
             </label>
             <input
               type="text"
-              {...register("name", { required: "Name is required" })}
+              {...register("productName", {
+                required: "Product Name is required",
+              })}
               className="input input-bordered w-full max-w-xs"
             />
           </div>
 
           <div className="form-control w-full max-w-xs">
             <label className="label">
-              <span className="label-text">Email</span>
+              <span className="label-text">Price</span>
             </label>
             <input
               type="text"
-              {...register("email", { required: "Email is required" })}
-              className="input input-bordered w-full max-w-xs"
-            />
-          </div>
-
-          <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text">Phone Number</span>
-            </label>
-            <input
-              type="number"
-              {...register("phone", { required: "Phone Number" })}
-              className="input input-bordered w-full max-w-xs"
-            />
-          </div>
-
-          <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text">Address</span>
-            </label>
-            <input
-              type="text"
-              {...register("address", { required: "Address is required" })}
+              {...register("price", { required: "Price is required" })}
               className="input input-bordered w-full max-w-xs"
             />
           </div>
@@ -103,18 +79,9 @@ const AddCustomer = () => {
             </label>
             <input
               type="text"
-              {...register("description", { required: "Name is required" })}
-              className="input input-bordered w-full max-w-xs"
-            />
-          </div>
-
-          <div className="form-control w-full max-w-xs">
-            <label className="label">
-              <span className="label-text">Birth Date</span>
-            </label>
-            <input
-              type="date"
-              {...register("birth", { required: "Name is required" })}
+              {...register("description", {
+                required: "Description is required",
+              })}
               className="input input-bordered w-full max-w-xs"
             />
           </div>
@@ -134,7 +101,7 @@ const AddCustomer = () => {
             <input
               className="btn px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 my-2 flex "
               type="submit"
-              value="Add Customer"
+              value="Add Product"
             />
           </div>
         </form>
@@ -143,4 +110,4 @@ const AddCustomer = () => {
   );
 };
 
-export default AddCustomer;
+export default AddProduct;

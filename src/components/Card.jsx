@@ -7,7 +7,7 @@ import Swal from "sweetalert";
 
 const Card = ({ product }) => {
   // eslint-disable-next-line react/prop-types
-  const { id, name, price, description, image } = product;
+  const { _id, name, price, description, image } = product;
 
   const dispatch = useAppDispatch();
 
@@ -35,7 +35,7 @@ const Card = ({ product }) => {
             </p>
             <div className="flex justify-center gap-3">
               <div className="flex justify-center mt-5">
-                <Link to={`/productDetails/${id}`}>
+                <Link to={`/productDetails/${_id}`}>
                   <button className="btn px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 my-2">
                     view details
                   </button>
