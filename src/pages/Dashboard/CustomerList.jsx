@@ -3,11 +3,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const CustomerList = () => {
-    
   const [customers, setCustomers] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/customers")
+      .get("https://repliq-assignment-backend.vercel.app/customers")
       .then((res) => {
         console.log(res.data);
         setCustomers(res.data);

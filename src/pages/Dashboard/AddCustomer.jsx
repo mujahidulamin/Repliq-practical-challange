@@ -32,7 +32,7 @@ const AddCustomer = () => {
           };
 
           //save customer information to the database
-          fetch("http://localhost:5000/customers", {
+          fetch("https://repliq-assignment-backend.vercel.app/customers", {
             headers: {
               "content-type": "application/json",
             },

@@ -6,7 +6,7 @@ const OrderDetails = () => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/orders")
+      .get("https://repliq-assignment-backend.vercel.app/orders")
       .then((res) => {
         console.log(res.data);
         setOrders(res.data);

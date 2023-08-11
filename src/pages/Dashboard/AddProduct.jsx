@@ -4,7 +4,7 @@ import Swal from "sweetalert";
 const AddProduct = () => {
   const { register, handleSubmit } = useForm();
 
-  const imageHostKey = "de29cf88aa178b3a6967e0556b301592"
+  const imageHostKey = "de29cf88aa178b3a6967e0556b301592";
   const handleAddProduct = (data) => {
     console.log(data);
     const image = data.image[0];
@@ -28,7 +28,7 @@ const AddProduct = () => {
           };
 
           //save customer information to the database
-          fetch("http://localhost:5000/products", {
+          fetch("https://repliq-assignment-backend.vercel.app/products", {
             headers: {
               "content-type": "application/json",
             },

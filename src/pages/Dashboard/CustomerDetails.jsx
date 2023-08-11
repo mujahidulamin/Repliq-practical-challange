@@ -6,7 +6,7 @@ const CustomerDetails = () => {
   const [customers, setCustomers] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/customers")
+      .get("https://repliq-assignment-backend.vercel.app/customers")
       .then((res) => {
         console.log(res.data);
         setCustomers(res.data);
@@ -70,7 +70,10 @@ const CustomerDetails = () => {
                   {customer?.phoneNumber}
                 </span>
               </span>
-              <p className="dark:text-gray-400"><span>Birth Date: </span>{customer?.birthdate}</p>
+              <p className="dark:text-gray-400">
+                <span>Birth Date: </span>
+                {customer?.birthdate}
+              </p>
             </div>
           </div>
         </div>

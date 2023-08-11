@@ -67,7 +67,7 @@ const ProductDetails = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/products")
+      .get("https://repliq-assignment-backend.vercel.app/products")
       .then((res) => {
         console.log(res.data);
         setProducts(res.data);
@@ -77,7 +77,7 @@ const ProductDetails = () => {
 
   const { id } = useParams();
   const product = products.find((p) => p._id === id);
-  
+
   console.log(product);
   const dispatch = useAppDispatch();
 
